@@ -70,7 +70,6 @@ int main()
                  (int)p[b].x, (int)p[b].y, WHITE);
     }
 
-    // rotation about Z-axis
     for(int i = 0; i < 8; i++)
     {
         np[i].x = p[i].x * cos(rad) - p[i].y * sin(rad);
@@ -78,7 +77,6 @@ int main()
         np[i].z = p[i].z;
     }
 
-    // draw rotated cube
     for(int i = 0; i < 12; i++)
     {
         int a = edges[i][0];
