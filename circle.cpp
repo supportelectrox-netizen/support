@@ -1,50 +1,19 @@
-#include <graphics.h>
-#include <iostream>
-# include <cmath>
+# include <graphics.h>
+# include <iostream>
 
 using namespace std;
 
-void drawLine(int x1, int y1, int x2, int y2, int color)
+void drawCircle(int x, int y, int h, int k)
 {
-    float dx = x2 - x1;
-    float dy = y2 - y1;
-    int steps;
+    putpixel(x + h, y + k, BLUE);
+    putpixel(x - h, y + k, WHITE);
+    putpixel(x + h, y - k, YELLOW);
+    putpixel(x - h, y - k, RED);
 
-    if (abs(dx) > abs(dy))
-    {
-        steps = abs(dx);
-    }
-    else
-    {
-        steps = abs(dy);
-    }
-
-    float xInc = dx / steps;
-    float yInc = dy / steps;
-
-    float x = x1;
-    float y = y1;
-
-    for (int i = 0; i <= steps; i++)
-    {
-        putpixel((int)(x + 0.5), (int)(y + 0.5), color);
-        x += xInc;
-        y += yInc;
-    }
-}
-
-void boundaryFill(int x, int y, int bColor, int fColor)
-{
-    int cColor = getpixel(x, y);
-
-    if (cColor != fColor && cColor != bColor)
-    {
-        putpixel(x, y, fColor);
-        boundaryFill(x + 1, y, bColor, fColor);
-        boundaryFill(x - 1, y, bColor, fColor);
-        boundaryFill(x, y + 1, bColor, fColor);
-        boundaryFill(x, y - 1, bColor, fColor);
-    }
+    putpixel(x + k, y + h, GREEN);
+    putpixel(x - k, y + h, MAGENTA);
+    putpixel(x + k, y - h, CYAN);
+    putpixel(x - k, y - h, BROWN);
 }
 
 int main()
@@ -52,27 +21,31 @@ int main()
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
 
-    int x1, y1, x2, y2;
-    int seedX, seedY;
+    int xc, yc, r;
 
-    cout << "Enter Top Left Corner (x1 y1): ";
-    cin >> x1 >> y1;
-    cout << "Enter Bottom Right Corner (x2 y2): ";
-    cin >> x2 >> y2;
-    cout << "Enter Seed Point Inside Rectangle (x y): ";
-    cin >> seedX >> seedY;
+    cout << "Enter Center (xc, yc): ";
+    cin >> xc >> yc;
 
-    int boundaryColor = WHITE;
-    int fillColor = RED;
+    cout << "Enter Radius: ";
+    cin >> r;
 
-    // draw rectangle using dda
-    drawLine(x1, y1, x2, y1, boundaryColor);
-    drawLine(x2, y1, x2, y2, boundaryColor);
-    drawLine(x2, y2, x1, y2, boundaryColor);
-    drawLine(x1, y2, x1, y1, boundaryColor);
+    int x = 0;
+    int y = r;
+    int p = 1 - r;
 
-    // boundary fill
-    boundaryFill(seedX, seedY, boundaryColor, fillColor);
+    while (x <= y)
+    {
+        drawCircle(xc, yc, x, y);
+        delay(20);
+        x++;
+        if (p < 0){
+            p = p + 2 * x + 1;
+        }
+        else {
+            y--;
+            p = p + 2 * x - 2 * y + 1;
+        }
+    }
 
     getch();
     closegraph();
