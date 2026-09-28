@@ -46,12 +46,10 @@ int main()
     cout << "Enter Shearing Factors (shx shy): ";
     cin >> shx >> shy;
 
-    // Original Triangle
     drawLine(x1, y1, x2, y2, WHITE);
     drawLine(x2, y2, x3, y3, WHITE);
     drawLine(x3, y3, x1, y1, WHITE);
 
-    // X and Y Shearing Transformation
     int nx1 = round(x1 + shx * y1);
     int ny1 = round(y1 + shy * x1);
 
@@ -61,7 +59,6 @@ int main()
     int nx3 = round(x3 + shx * y3);
     int ny3 = round(y3 + shy * x3);
 
-    // Sheared Triangle
     drawLine(nx1, ny1, nx2, ny2, RED);
     drawLine(nx2, ny2, nx3, ny3, RED);
     drawLine(nx3, ny3, nx1, ny1, RED);
