@@ -33,9 +33,6 @@ void drawLine(int x1, int y1, int x2, int y2)
 }
 
 
-// ======================================================
-// MIDPOINT ELLIPSE ALGORITHM
-// ======================================================
 void drawEllipse(int xc, int yc, int rx, int ry)
 {
     float x = 0;
@@ -50,7 +47,6 @@ void drawEllipse(int xc, int yc, int rx, int ry)
     float dy = 2 * rx2 * y;
 
 
-    // REGION 1
     while (dx < dy)
     {
         putpixel(xc + round(x), yc + round(y), WHITE);
@@ -75,12 +71,7 @@ void drawEllipse(int xc, int yc, int rx, int ry)
         }
     }
 
-
-    // REGION 2
-    float p2 =
-        ry2 * (x + 0.5) * (x + 0.5)
-        + rx2 * (y - 1) * (y - 1)
-        - rx2 * ry2;
+    float p2 = ry2 * (x + 0.5) * (x + 0.5) + rx2 * (y - 1) * (y - 1) - rx2 * ry2;
 
 
     while (y >= 0)
@@ -109,10 +100,6 @@ void drawEllipse(int xc, int yc, int rx, int ry)
     }
 }
 
-
-// ======================================================
-// MAIN
-// ======================================================
 int main()
 {
     int gd = DETECT, gm;
@@ -129,17 +116,11 @@ int main()
     cout << "\nEnter center of ellipses (xc yc): ";
     cin >> xc >> yc;
 
-    // First ellipse
     cout << "\nEnter First Ellipse Rx Ry: ";
     cin >> rx1 >> ry1;
-
-    // Second ellipse
     cout << "Enter Second Ellipse Rx Ry: ";
     cin >> rx2 >> ry2;
-
-
     
-    // Outer Diamond
     cout << "\nEnter TOP point (x y): ";
     cin >> topX >> topY;
     cout << "Enter BOTTOM point (x y): ";
@@ -149,20 +130,15 @@ int main()
     cout << "Enter RIGHT point (x y): ";
     cin >> rightX >> rightY;
 
-    // OUTER DIAMOND
     drawLine(leftX, leftY, topX, topY);
     drawLine(topX, topY, rightX, rightY);
     drawLine(rightX, rightY, bottomX, bottomY);
     drawLine(bottomX, bottomY, leftX, leftY);
 
-
-    // INNER DIAGONAL LINES
     drawLine(leftX, leftY, rightX, rightY);
     drawLine(topX, topY, bottomX, bottomY);
 
-    // FIRST ELLIPSE
     drawEllipse(xc, yc, rx1, ry1);
-    // SECOND ELLIPSE
     drawEllipse(xc, yc, rx2, ry2);
 
 
