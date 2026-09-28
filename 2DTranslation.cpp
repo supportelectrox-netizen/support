@@ -48,12 +48,10 @@ int main()
     cout << "Enter Translation Factors (tx ty): ";
     cin >> tx >> ty;
 
-    // draw original triangle
     drawLine(x1, y1, x2, y2, WHITE);
     drawLine(x2, y2, x3, y3, WHITE);
     drawLine(x3, y3, x1, y1, WHITE);
 
-    // translation
     int nx1 = x1 + tx;
     int ny1 = y1 + ty;
 
@@ -63,7 +61,6 @@ int main()
     int nx3 = x3 + tx;
     int ny3 = y3 + ty;
 
-    // draw translated triangle
     drawLine(nx1, ny1, nx2, ny2, RED);
     drawLine(nx2, ny2, nx3, ny3, RED);
     drawLine(nx3, ny3, nx1, ny1, RED);
