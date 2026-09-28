@@ -18,21 +18,18 @@ int main()
     cout << "Enter bottom-right corner (x2 y2): ";
     cin >> x2 >> y2;
 
-    // draw top and bottom edges
     for (x = x1; x <= x2; x++)
     {
-        putpixel(x, y1, WHITE); // TOP EDGE
-        putpixel(x, y2, WHITE); // BOTTOM EDGE
+        putpixel(x, y1, WHITE);
+        putpixel(x, y2, WHITE);
     }
 
-    // draw left and right edges
     for (y = y1; y <= y2; y++)
     {
-        putpixel(x1, y, WHITE); // LEFT EDGE
+        putpixel(x1, y, WHITE);
         putpixel(x2, y, WHITE);
     }
 
-    // fill the rectangle
     for (y = y1 + 1; y < y2; y++)
     {
         for (x = x1 + 1; x < x2; x++)
