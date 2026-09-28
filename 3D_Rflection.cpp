@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// DDA Line Drawing Algorithm
 void drawLine(int x1, int y1, int x2, int y2, int color)
 {
     float dx = x2 - x1;
@@ -33,7 +32,7 @@ void drawLine(int x1, int y1, int x2, int y2, int color)
     }
 }
 
-// 3D Point
+
 struct Point3D
 {
     int x, y, z;
@@ -47,7 +46,6 @@ int main()
 
     Point3D p[8];
 
-    // Input vertices
     cout << "Enter 8 vertices of Cube (x y z):\n";
 
     for (int i = 0; i < 8; i++)
@@ -56,7 +54,7 @@ int main()
         cin >> p[i].x >> p[i].y >> p[i].z;
     }
 
-    // Reflection choice
+
     int choice;
 
     cout << "\n3D Reflection Options:\n";
@@ -70,7 +68,6 @@ int main()
     cout << "\nEnter your choice: ";
     cin >> choice;
 
-    // Edges of cube
     int edges[12][2] =
     {
         {0,1}, {1,2}, {2,3}, {3,0},
@@ -78,67 +75,43 @@ int main()
         {0,4}, {1,5}, {2,6}, {3,7}
     };
 
-    // -------------------------------
-    // Draw Original Cube
-    // -------------------------------
-
+   
     for (int i = 0; i < 12; i++)
     {
         int a = edges[i][0];
         int b = edges[i][1];
 
-        drawLine(
-            p[a].x,
-            p[a].y,
-            p[b].x,
-            p[b].y,
-            WHITE
+        drawLine(p[a].x, p[a].y, p[b].x, p[b].y, WHITE
         );
     }
-
-    // -------------------------------
-    // 3D Reflection
-    // -------------------------------
 
     Point3D np[8];
 
     for (int i = 0; i < 8; i++)
     {
         np[i] = p[i];
-
-        // Reflection about XY Plane
         if (choice == 1)
         {
             np[i].z = -p[i].z;
         }
-
-        // Reflection about XZ Plane
         else if (choice == 2)
         {
             np[i].y = -p[i].y;
         }
-
-        // Reflection about YZ Plane
         else if (choice == 3)
         {
             np[i].x = -p[i].x;
         }
-
-        // Reflection about X Axis
         else if (choice == 4)
         {
             np[i].y = -p[i].y;
             np[i].z = -p[i].z;
         }
-
-        // Reflection about Y Axis
         else if (choice == 5)
         {
             np[i].x = -p[i].x;
             np[i].z = -p[i].z;
         }
-
-        // Reflection about Z Axis
         else if (choice == 6)
         {
             np[i].x = -p[i].x;
@@ -146,11 +119,6 @@ int main()
         }
     }
 
-    // -------------------------------
-    // Draw Reflected Cube
-    // -------------------------------
-
-    // Move reflected cube to the right
     int offsetX = 250;
 
     for (int i = 0; i < 12; i++)
@@ -166,17 +134,11 @@ int main()
             RED
         );
     }
-
-    // Labels
     setcolor(WHITE);
     outtextxy(50, 30, "Original Cube");
-
     setcolor(RED);
     outtextxy(300, 30, "Reflected Cube");
-
     getch();
-
     closegraph();
-
     return 0;
 }
