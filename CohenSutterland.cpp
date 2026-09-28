@@ -5,13 +5,13 @@
 using namespace std;
 
 
-const int INSIDE = 0; // 0000
-const int LEFT   = 1; // 0001
-const int RIGHT  = 2; // 0010
-const int BOTTOM = 4; // 0100
-const int TOP    = 8; // 1000
+const int INSIDE = 0; 
+const int LEFT   = 1;
+const int RIGHT  = 2; 
+const int BOTTOM = 4;
+const int TOP    = 8; 
 
-// clipping window
+
 float xmin, ymin, xmax, ymax;
 
 void drawLine(int x1, int y1, int x2, int y2, int color)
@@ -35,7 +35,7 @@ void drawLine(int x1, int y1, int x2, int y2, int color)
     }
 }
 
-// compute region code
+
 int computeCode(float x, float y)
 {
     int code = INSIDE;
@@ -53,7 +53,7 @@ int computeCode(float x, float y)
     return code;
 }
 
-// cohen-sutherland line clipping
+
 void lineClip(float x1, float y1, float x2, float y2)
 {
     int code1 = computeCode(x1, y1);
@@ -133,20 +133,19 @@ int main()
     cout << "Enter Line Endpoints (x1 y1 x2 y2): ";
     cin >> x1 >> y1 >> x2 >> y2;
 
-    // draw clipping window
+  
     drawLine(xmin, ymin, xmax, ymin, WHITE);
     drawLine(xmax, ymin, xmax, ymax, WHITE);
     drawLine(xmax, ymax, xmin, ymax, WHITE);
     drawLine(xmin, ymax, xmin, ymin, WHITE);
 
-    // draw original line
+ 
     drawLine(x1, y1, x2, y2, YELLOW);
 
-    // draw clipped line
+
     lineClip(x1, y1, x2, y2);
 
     getch();
     closegraph();
-
     return 0;
 }
