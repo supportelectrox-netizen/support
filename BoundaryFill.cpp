@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// dda line drawing
+
 void drawLine(int x1, int y1, int x2, int y2, int color)
 {
     float dx = x2 - x1;
@@ -34,7 +34,6 @@ void drawLine(int x1, int y1, int x2, int y2, int color)
     }
 }
 
-// 4-connected boundary fill
 void boundaryFill(int x, int y, int fillColor, int boundaryColor)
 {
     int currentColor = getpixel(x, y);
@@ -66,14 +65,12 @@ int main()
 
     int boundaryColor = WHITE;
     int fillColor = RED;
-
-    // draw rectangle using dda
+    
     drawLine(x1, y1, x2, y1, boundaryColor);
     drawLine(x2, y1, x2, y2, boundaryColor);
     drawLine(x2, y2, x1, y2, boundaryColor);
     drawLine(x1, y2, x1, y1, boundaryColor);
 
-    // boundary fill
     boundaryFill(seedX, seedY, fillColor, boundaryColor);
 
     getch();
