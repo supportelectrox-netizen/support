@@ -65,13 +65,11 @@ int main()
     int boundaryColor = WHITE;
     int fillColor = RED;
 
-    // draw rectangle using dda
     drawLine(x1, y1, x2, y1, boundaryColor);
     drawLine(x2, y1, x2, y2, boundaryColor);
     drawLine(x2, y2, x1, y2, boundaryColor);
     drawLine(x1, y2, x1, y1, boundaryColor);
 
-    // boundary fill
     boundaryFill(seedX, seedY, boundaryColor, fillColor);
 
     getch();
