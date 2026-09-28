@@ -49,7 +49,6 @@ int main()
     cout << "Enter Translation Factors (tx ty tz): ";
     cin >> tx >> ty >> tz;
 
-    // draw original cube
     int edges[12][2] =
     {
         {0,1},{1,2},{2,3},{3,0},
@@ -65,7 +64,6 @@ int main()
         drawLine(p[a].x, p[a].y, p[b].x, p[b].y, WHITE);
     }
 
-    // translate
     Point3D np[8];
 
     for(int i = 0; i < 8; i++)
@@ -75,7 +73,6 @@ int main()
         np[i].z = p[i].z + tz;
     }
 
-    // draw translated cube
     for(int i = 0; i < 12; i++)
     {
         int a = edges[i][0];
