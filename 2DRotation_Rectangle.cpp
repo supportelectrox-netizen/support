@@ -45,31 +45,23 @@ int main()
     cout << "Enter Translation Factors (tx ty): ";
     cin >> tx >> ty;
 
-    drawLine(x1, y1, x2, y1, WHITE); // Top Line
-    drawLine(x1, y2, x2, y2, RED); // Bottom Line
-    drawLine(x1, y1, x1, y2, BLUE); // Left Line
-    drawLine(x2, y1, x2, y2, YELLOW); // Right Line
-
-    // translation
+    drawLine(x1, y1, x2, y1, WHITE); 
+    drawLine(x1, y2, x2, y2, RED); 
+    drawLine(x1, y1, x1, y2, BLUE); 
+    drawLine(x2, y1, x2, y2, YELLOW); 
+    
     int nx1 = x1 + tx;
     int ny1 = y1 + ty;
 
     int nx2 = x2 + tx;
     int ny2 = y2 + ty;
 
+    drawLine(nx1, ny1, nx2, ny1, GREEN); 
+    drawLine(nx1, ny2, nx2, ny2, GREEN); 
 
-    // draw translated triangle
-    drawLine(nx1, ny1, nx2, ny1, GREEN); // Top Line
-    drawLine(nx1, ny2, nx2, ny2, GREEN); // Bottom Line
-
-
-
-
-    // Original Rectangle Label
     setcolor(WHITE);
     outtextxy(x1, y1 - 20, "Original");
 
-    // Translated Rectangle Label
     setcolor(GREEN);
     outtextxy(nx1, ny1 - 20, "Translated");
 
