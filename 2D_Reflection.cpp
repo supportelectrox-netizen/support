@@ -54,44 +54,23 @@ int main()
 
     cout << "Enter your choice: ";
     cin >> choice;
-
-    // Screen center as Origin
     int cx = getmaxx() / 2;
     int cy = getmaxy() / 2;
 
-    // Draw X-axis using drawLine()
     drawLine(0, cy, getmaxx(), cy, WHITE);
-
-    // Draw Y-axis using drawLine()
     drawLine(cx, 0, cx, getmaxy(), WHITE);
-
-    // -----------------------------
-    // Original Triangle
-    // -----------------------------
-
-    drawLine(cx + x1, cy - y1,
-             cx + x2, cy - y2, WHITE);
-
-    drawLine(cx + x2, cy - y2,
-             cx + x3, cy - y3, WHITE);
-
-    drawLine(cx + x3, cy - y3,
-             cx + x1, cy - y1, WHITE);
+    
+    drawLine(cx + x1, cy - y1, cx + x2, cy - y2, WHITE);
+    drawLine(cx + x2, cy - y2,  cx + x3, cy - y3, WHITE);
+    drawLine(cx + x3, cy - y3, cx + x1, cy - y1, WHITE);
 
 
     int nx1, ny1;
     int nx2, ny2;
     int nx3, ny3;
 
-
-    // -----------------------------
-    // Reflection
-    // -----------------------------
-
     if (choice == 1)
     {
-        // Reflection about X-axis
-
         nx1 = x1;
         ny1 = -y1;
 
@@ -104,8 +83,6 @@ int main()
 
     else if (choice == 2)
     {
-        // Reflection about Y-axis
-
         nx1 = -x1;
         ny1 = y1;
 
@@ -118,8 +95,6 @@ int main()
 
     else if (choice == 3)
     {
-        // Reflection about Origin
-
         nx1 = -x1;
         ny1 = -y1;
 
@@ -140,24 +115,11 @@ int main()
         return 0;
     }
 
-
-    // -----------------------------
-    // Reflected Triangle
-    // -----------------------------
-
-    drawLine(cx + nx1, cy - ny1,
-             cx + nx2, cy - ny2, RED);
-
-    drawLine(cx + nx2, cy - ny2,
-             cx + nx3, cy - ny3, RED);
-
-    drawLine(cx + nx3, cy - ny3,
-             cx + nx1, cy - ny1, RED);
-
+    drawLine(cx + nx1, cy - ny1,  cx + nx2, cy - ny2, RED);
+    drawLine(cx + nx2, cy - ny2, cx + nx3, cy - ny3, RED);
+    drawLine(cx + nx3, cy - ny3, cx + nx1, cy - ny1, RED);
 
     getch();
-
     closegraph();
-
     return 0;
 }
