@@ -35,7 +35,6 @@ void drawLine(int x1, int y1, int x2, int y2, int color)
     }
 }
 
-// recursive flood fill algorithm
 void floodFill(int x, int y, int oldColor, int newColor)
 {
     int currentColor = getpixel(x, y);
@@ -43,8 +42,6 @@ void floodFill(int x, int y, int oldColor, int newColor)
     if (currentColor == oldColor)
     {
         putpixel(x, y, newColor);
-
-        // 4-connected neighbors
         floodFill(x + 1, y, oldColor, newColor);
         floodFill(x - 1, y, oldColor, newColor);
         floodFill(x, y + 1, oldColor, newColor);
@@ -72,20 +69,15 @@ int main()
     int boundaryColor = WHITE;
     int fillColor = GREEN;
 
-    // draw rectangle using dda
     drawLine(x1, y1, x2, y1, boundaryColor);
     drawLine(x2, y1, x2, y2, boundaryColor);
     drawLine(x2, y2, x1, y2, boundaryColor);
     drawLine(x1, y2, x1, y1, boundaryColor);
-
-    // get the original color at the seed point
+ 
     int oldColor = getpixel(seedX, seedY);
-
-    // flood sill
     floodFill(seedX, seedY, oldColor, fillColor);
 
     getch();
     closegraph();
-
     return 0;
 }
